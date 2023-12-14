@@ -1,0 +1,30 @@
+<aura:component implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome" access="global">
+    <aura:attribute name="options" type="String[]" />
+    <aura:attribute name="concauth" type="String[]" />
+    <aura:attribute name="cardtype" type="String[]" />
+    <aura:attribute name="cardtype2" type="String[]" />
+    <aura:attribute name="selectedValue" type="String" />
+    <aura:attribute name="selectedCardType" type="String" />
+
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+
+    <div class="slds-p-around_medium">
+        <lightning:card class="slds-p-horizontal_xx-small">
+            <center><h1 class="header1"> Aura Task1</h1></center>
+            <lightning:combobox
+                label="{!v.options[0]}"
+                options="{!v.concauth}"
+                value="{!v.selectedValue}"
+                onchange="{!c.handleFirstPicklistChange}"
+            />
+            <lightning:combobox
+                label="{!v.options[1]}"
+                options="{!v.selectedValue == 'CentreLink' ? v.cardtype : v.cardtype2}"
+                value="{!v.selectedCardType}"
+                onchange="{!c.handleSecondPicklistChange}"
+            />
+            <lightning:input label="{!v.options[2]}"/>
+            <lightning:button variant="brand" label="Save" iconPosition="left" />
+        </lightning:card>
+    </div>
+</aura:component>
